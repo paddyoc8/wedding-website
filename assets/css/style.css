@@ -1,0 +1,29 @@
+:root {
+    --dark1: #496585;
+    --light1: #eff4fb; 
+    --dark2: #91a9c5; 
+    --light2: #dae7fa; 
+    --accent1: #de9ca8; 
+    --accent2: #a7b788;
+    --accent3: #91a9c5;
+    --accent4: #fed289;
+    --accent5: #fec6ad;
+    --accent6: #f4cde0;
+    --headerFont: Arial, sans-serif
+}
+
+  
+  body {
+    font-family: var(--font-main);
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+  }
+  
+  header, footer {
+    padding: 20px;
+    background-color: var(--primary-color);
+    color: white;
+    text-align: center;
+  }
+  
