@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="../assets/css/style.css"> <!-- Main stylesheet with variables -->
     <link rel="stylesheet" href="../assets/css/layout.css"> <!-- Layout-related styles -->
     <link rel="stylesheet" href="../assets/css/typography.css"> <!-- Typography-related styles -->
+    <link rel="stylesheet" href="../assets/css/swiper.css">
     <!-- Swiper CSS -->
     <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
     <!-- Swiper JS -->
@@ -15,17 +16,6 @@
 <body>
   <!-- Header -->  
   <?php include '../components/header.html'; ?>
-
-    <!-- Schedule Section
-    <section id="schedule">
-        <h1>Wedding Schedule</h1>
-        <ul>
-            <li><strong>Bar opens:</strong> 12:30 PM.</li>
-            <li><strong>Ceremony:</strong> 13:30 PM in the Chatsworth Suite.</li>
-            <li><strong>Drinks reception:</strong> 14:00 PM in the garden.</li>
-            <li><strong>Wedding breakfast:</strong> 16:00 PM in Chatsworth Suite.</li>
-        </ul>
-    </section> -->
 
     <!-- Timeline structure -->
     <div class="container">
@@ -66,17 +56,30 @@
 
 <script>
     var swiper = new Swiper('.swiper-container', {
+      direction: 'vertical', // Vertical scrolling
       slidesPerView: 1,
-      spaceBetween: 30,
+      spaceBetween: 0, // No space between slides
+      effect: 'fade', // Enable fade effect
+      fadeEffect: {
+          crossFade: true, // Smooth fade between slides
+      },
       pagination: {
-        el: '.swiper-pagination',
-        clickable: true,
+          el: '.swiper-pagination',
+          clickable: true,
       },
       navigation: {
-        nextEl: '.swiper-button-next',
-        prevEl: '.swiper-button-prev',
+          nextEl: '.swiper-button-next',
+          prevEl: '.swiper-button-prev',
       },
-    });
+      loop: true, // Optional: Enable continuous loop
+      keyboard: {
+          enabled: true, // Allow keyboard navigation
+          onlyInViewport: true,
+      },
+  });
+
+
+
   </script>
   
 </html>

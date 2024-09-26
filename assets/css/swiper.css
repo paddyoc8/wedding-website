@@ -1,0 +1,45 @@
+/* swiper.css */
+.swiper-container {
+    width: 100%;
+    height: 600px; /* Adjust the height for vertical scroll */
+    margin: 0 auto;
+    overflow: hidden; /* Ensure only the active slide is shown */
+}
+
+.swiper-slide {
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0; /* Make all slides initially hidden */
+    transition: opacity 0.5s ease; /* Smooth transition for showing the active slide */
+}
+
+.swiper-slide-active {
+    opacity: 1; /* Only the active slide is fully visible */
+}
+
+/* Swiper navigation buttons */
+.swiper-button-next,
+.swiper-button-prev {
+    width: 30px;
+    height: 30px;
+    position: absolute;
+    color: var(--accent1); /* Change the color to one from your palette */
+    left: 50%; /* Align arrows horizontally */
+    transform: translateX(-50%);
+    z-index: 10;
+    color: var(--dark1);
+    cursor: pointer;
+}
+
+/* Position arrows vertically */
+.swiper-button-next {
+    bottom: 10px; /* Move "next" arrow to the bottom */
+}
+
+.swiper-button-prev {
+    top: 10px; /* Move "prev" arrow to the top */
+}
