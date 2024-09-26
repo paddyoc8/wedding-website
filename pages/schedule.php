@@ -4,7 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Wedding Schedule</title>
-    <link rel="stylesheet" href="../style/style.css">
+    <link rel="stylesheet" href="../assets/css/style.css"> <!-- Main stylesheet with variables -->
+    <link rel="stylesheet" href="../assets/css/layout.css"> <!-- Layout-related styles -->
+    <link rel="stylesheet" href="../assets/css/typography.css"> <!-- Typography-related styles -->
     <!-- Swiper CSS -->
     <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
     <!-- Swiper JS -->
@@ -31,7 +33,7 @@
         <div class="timeline">
           <div class="swiper-container">
             <div class="swiper-wrapper">
-              <div class="swiper-slide" style="background-image: url('../content/header.jpg')" data-year="Us">
+              <div class="swiper-slide" style="background-image: url('../assets/images/header.jpg')" data-year="Us">
                 <div class="swiper-slide-content">
                   <span class="timeline-year">2011</span>
                   <h4 class="timeline-title">Our nice super title</h4>
@@ -39,7 +41,7 @@
                 </div>
               </div>
               
-              <div class="swiper-slide" style="background-image: url('../content/maynard.jpg')" data-year="12:30">
+              <div class="swiper-slide" style="background-image: url('../assets/images/maynard.jpg')" data-year="12:30">
                 <div class="swiper-slide-content">
                   <span class="timeline-year">12:30</span>
                   <h4 class="timeline-title">Arrival</h4>

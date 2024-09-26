@@ -13,3 +13,13 @@ h1, h2, h3, h4, h5 {
     text-decoration: none;
   }
   
+  /* typography.css */
+h1, h2, h3 {
+  font-family: var(--headerFont);
+  color: var(--accent1); /* Pink accent for headings */
+}
+
+p {
+  color: var(--dark2); /* Dark blue-gray for paragraph text */
+  line-height: 1.6;
+}

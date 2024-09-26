@@ -16,3 +16,16 @@
     gap: 20px;
   }
   
+  /* layout.css */
+header {
+  background-color: var(--dark1);
+  color: var(--light1);
+  padding: 20px;
+}
+
+footer {
+  background-color: var(--dark2);
+  color: var(--light1);
+  text-align: center;
+  padding: 20px 0;
+}
