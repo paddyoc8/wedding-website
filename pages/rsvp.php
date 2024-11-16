@@ -36,7 +36,7 @@
     // Fetch selected guest details
     $guestIds = $_GET['guest_ids']; // Assume safe since we checked its existence
     $placeholders = implode(',', array_fill(0, count($guestIds), '?'));
-    $stmt = $conn->prepare("SELECT id, name FROM rsvps WHERE id IN ($placeholders)");
+    $stmt = $conn->prepare("SELECT id, forename, surname FROM rsvps WHERE id IN ($placeholders)");
     $stmt->bind_param(str_repeat('i', count($guestIds)), ...$guestIds);
     $stmt->execute();
     $result = $stmt->get_result();
@@ -68,7 +68,7 @@
                     <tr>
                         <td>
                             <input type="hidden" name="guest_ids[]" value="<?php echo $guest['id']; ?>">
-                            <?php echo htmlspecialchars($guest['name']); ?>
+                            <?php echo htmlspecialchars($guest['forename'] . ' ' . $guest['surname']); ?>
                         </td>
                         <td>
                             <select name="attending[]" required>
