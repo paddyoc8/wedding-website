@@ -31,19 +31,27 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Enter Password</title>
     <link rel="stylesheet" href="../assets/css/style.css">
-    <link rel="stylesheet" href="../assets/css/layout.css"> <!-- Layout-related styles -->
-    <link rel="stylesheet" href="../assets/css/typography.css"> <!-- Typography-related styles -->
 </head>
 <body>
-    <h1>Enter Password</h1>
-    <?php if (!empty($error)): ?>
-        <p style="color: red;"><?php echo htmlspecialchars($error); ?></p>
-    <?php endif; ?>
-    <form method="POST" action="">
-        <label for="password">Password:</label>
-        <input type="password" id="password" name="password" required>
-        <button type="submit">Submit</button>
-    </form>
+    <!-- Main Content -->
+    <main>
+        <div class="container card">
+            <h1 class="section-title">Enter Password</h1>
+            
+            <?php if (!empty($error)): ?>
+                <p class="error-message"><?php echo htmlspecialchars($error); ?></p>
+            <?php endif; ?>
+
+            <form method="POST" action="" class="form">
+                <div class="form-group">
+                    <label for="password" class="form-label">Password:</label>
+                    <input type="password" id="password" name="password" class="form-input" required>
+                </div>
+                <button type="submit" class="button">Submit</button>
+            </form>
+        </div>
+    </main>
+
+    <?php include '../components/footer.html'; ?>
 </body>
-<?php include '../components/footer.html'; ?>
 </html>

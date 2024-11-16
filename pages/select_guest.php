@@ -15,27 +15,6 @@ if (!isset($_SESSION['authenticated']) || $_SESSION['authenticated'] !== true) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Select Guest</title>
     <link rel="stylesheet" href="../assets/css/style.css">
-    <link rel="stylesheet" href="../assets/css/layout.css">
-    <link rel="stylesheet" href="../assets/css/typography.css">
-    <style>
-        .guest-item {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 1rem;
-            margin: 0.5rem 0;
-            border: 2px solid var(--accent2);
-            border-radius: 0.5rem;
-            cursor: pointer;
-            background-color: var(--light2);
-            transition: background-color 0.3s, border-color 0.3s;
-        }
-
-        .guest-item.selected {
-            background-color: var(--accent6);
-            border-color: var(--accent1);
-        }
-    </style>
 </head>
 <body>
 <?php

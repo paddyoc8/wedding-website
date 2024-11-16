@@ -7,6 +7,7 @@ if (!isset($_SESSION['authenticated']) || $_SESSION['authenticated'] !== true) {
     exit;
 }
 ?>
+
 <?php
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // Ensure all expected form fields are set
@@ -45,7 +46,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         }
     }
 
-    echo "RSVPs submitted successfully!";
-    $conn->close();
+    // Redirect back to the rsvp.php page with a success message
+    header("Location: rsvp.php?rsvp_submitted=true");
+    exit;
 }
 ?>
