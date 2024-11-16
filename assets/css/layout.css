@@ -1,18 +1,87 @@
 .container {
-    width: 90%;
-    margin: 0 auto;
-    max-width: 1200px;
+  width: 90%;
+  margin: 0 auto;
+  max-width: auto;
+}
+
+.flex {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+/* Header Styling */
+header {
+  background-color: var(--dark1); /* Keep your existing background */
+  color: var(--light1);
+  padding: 10px 20px; /* Adjusted padding for better appearance */
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1); /* Added subtle shadow for depth */
+}
+
+header .container {
+  display: flex;
+  justify-content: center; /* Center navigation items */
+  align-items: center;
+  max-width: 1200px; /* Limit header width for a clean layout */
+}
+
+header nav {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+header .nav-links {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  gap: 20px; /* Space between menu items */
+  padding: 0;
+  margin: 0;
+}
+
+header .nav-links li {
+  text-transform: uppercase;
+  font-family: var(--headerFont);
+}
+
+header .nav-links li a {
+  text-decoration: none;
+  color: var(--light1); /* Light color for contrast */
+  font-size: 1rem;
+  padding: 8px 12px;
+  transition: color 0.3s, background-color 0.3s;
+  border-radius: 5px;
+}
+
+header .nav-links li a:hover {
+  color: var(--dark1); /* Dark color on hover */
+  background-color: var(--accent1); /* Accent background on hover */
+}
+
+/* Footer */
+footer {
+  background-color: var(--dark2);
+  color: var(--light1);
+  text-align: center;
+  padding: 20px 0;
+}
+
+/* Responsive Menu for Mobile Devices */
+@media (max-width: 768px) {
+  header nav {
+      flex-direction: column;
+      align-items: center;
   }
-  
-  .flex {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+
+  header .nav-links {
+      flex-direction: column;
+      gap: 15px;
   }
-  
-  .grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 20px;
-  }
-  
+}

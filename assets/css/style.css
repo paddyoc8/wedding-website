@@ -1,29 +1,95 @@
 :root {
-    --dark1: #496585;
-    --light1: #eff4fb; 
-    --dark2: #91a9c5; 
-    --light2: #dae7fa; 
-    --accent1: #de9ca8; 
-    --accent2: #a7b788;
-    --accent3: #91a9c5;
-    --accent4: #fed289;
-    --accent5: #fec6ad;
-    --accent6: #f4cde0;
-    --headerFont: Arial, sans-serif
+  --dark1: #496585;
+  --light1: #eff4fb; 
+  --dark2: #91a9c5; 
+  --light2: #dae7fa; 
+  --accent1: #de9ca8; 
+  --accent2: #a7b788;
+  --accent3: #91a9c5;
+  --accent4: #fed289;
+  --accent5: #fec6ad;
+  --accent6: #f4cde0;
+  --headerFont: Arial, sans-serif;
+
+  /* Add reusable styles for buttons and table */
+  --btn-bg-primary: var(--accent2);
+  --btn-bg-danger: var(--accent1);
+  --btn-bg-hover: var(--accent4);
+  --table-border: var(--dark2);
 }
 
-  
-  body {
-    font-family: var(--font-main);
-    margin: 0;
-    padding: 0;
-    background-color: #f4f4f4;
-  }
-  
-  header, footer {
-    padding: 20px;
-    background-color: var(--primary-color);
-    color: white;
-    text-align: center;
-  }
-  
+/* Base Styles */
+body {
+  font-family: var(--headerFont);
+  margin: 0;
+  padding: 0;
+  background-color: var(--light1);
+}
+
+header, footer {
+  padding: 20px;
+  background-color: var(--dark1);
+  color: white;
+  text-align: center;
+}
+
+/* Table Styles */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 20px;
+  background-color: var(--light2);
+  border: 1px solid var(--table-border);
+}
+
+table th, table td {
+  border: 1px solid var(--table-border);
+  padding: 12px;
+  text-align: center;
+  font-family: var(--headerFont);
+  font-size: 16px;
+}
+
+table th {
+  background-color: var(--dark2);
+  color: white;
+  font-weight: bold;
+}
+
+table tr:nth-child(even) {
+  background-color: var(--light2);
+}
+
+table tr:hover {
+  background-color: var(--accent6);
+}
+
+/* Button Styles */
+button {
+  padding: 8px 12px;
+  font-size: 14px;
+  font-family: var(--headerFont);
+  cursor: pointer;
+  border: none;
+  border-radius: 4px;
+}
+
+button.addRow {
+  background-color: var(--btn-bg-primary);
+  color: white;
+  transition: background-color 0.3s;
+}
+
+button.addRow:hover {
+  background-color: var(--btn-bg-hover);
+}
+
+button.removeRow {
+  background-color: var(--btn-bg-danger);
+  color: white;
+  transition: background-color 0.3s;
+}
+
+button.removeRow:hover {
+  background-color: var(--btn-bg-hover);
+}
