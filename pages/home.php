@@ -1,3 +1,13 @@
+<?php
+session_start();
+
+// If the user is not authenticated, redirect to the password page
+if (!isset($_SESSION['authenticated']) || $_SESSION['authenticated'] !== true) {
+    header('Location: login.php');
+    exit;
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -11,14 +21,6 @@
 <body>
     <!-- Header -->
     <?php include '../components/header.html'; ?>
-
-    <!-- Hero Header Section -->
-    <header id="hero">
-        <div class="overlay">
-            <h1>Emma and Patrick</h1>
-            <p>Join us on August 1st, 2025</p>
-        </div>
-    </header>
 
     <!-- Welcome Section -->
     <section id="welcome">

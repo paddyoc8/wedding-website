@@ -1,4 +1,13 @@
 <?php
+session_start();
+
+// If the user is not authenticated, redirect to the password page
+if (!isset($_SESSION['authenticated']) || $_SESSION['authenticated'] !== true) {
+    header('Location: login.php');
+    exit;
+}
+?>
+<?php
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // Ensure all expected form fields are set
     $guestIds = $_POST['guest_ids'] ?? [];
