@@ -60,7 +60,6 @@
                     <th>Attending</th>
                     <th>Menu Selection</th>
                     <th>Dietary Requirements</th>
-                    <th>Actions</th>
                 </tr>
             </thead>
             <tbody>
@@ -83,7 +82,6 @@
                             </select>
                         </td>
                         <td><input type="text" name="dietary[]" placeholder="E.g., Nut allergy"></td>
-                        <td><button type="button" class="removeRow">-</button></td>
                     </tr>
                 <?php endforeach; ?>
             </tbody>
