@@ -3,11 +3,10 @@ session_start();
 
 // If the user is not authenticated, redirect to the password page
 if (!isset($_SESSION['authenticated']) || $_SESSION['authenticated'] !== true) {
-    header('Location: password.php');
+    header('Location: login.php');
     exit;
 }
 ?>
-
 
 <!DOCTYPE html>
 <html lang="en">

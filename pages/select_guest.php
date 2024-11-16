@@ -1,3 +1,12 @@
+<?php
+session_start();
+
+// If the user is not authenticated, redirect to the password page
+if (!isset($_SESSION['authenticated']) || $_SESSION['authenticated'] !== true) {
+    header('Location: login.php');
+    exit;
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <?php include '../components/header.html'; ?>
@@ -8,6 +17,25 @@
     <link rel="stylesheet" href="../assets/css/style.css">
     <link rel="stylesheet" href="../assets/css/layout.css">
     <link rel="stylesheet" href="../assets/css/typography.css">
+    <style>
+        .guest-item {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 1rem;
+            margin: 0.5rem 0;
+            border: 2px solid var(--accent2);
+            border-radius: 0.5rem;
+            cursor: pointer;
+            background-color: var(--light2);
+            transition: background-color 0.3s, border-color 0.3s;
+        }
+
+        .guest-item.selected {
+            background-color: var(--accent6);
+            border-color: var(--accent1);
+        }
+    </style>
 </head>
 <body>
 <?php
@@ -55,32 +83,66 @@ foreach ($guests as $guest) {
 }
 ?>
 
-<h1>Select Guest</h1>
-<form action="rsvp.php" method="GET">
-    <p>Matching names for "<?php echo htmlspecialchars("$forename $surname"); ?>":</p>
-    <ul>
-        <?php foreach ($guests as $guest): ?>
-            <li>
-                <input type="checkbox" name="guest_ids[]" value="<?php echo $guest['id']; ?>">
-                <?php echo htmlspecialchars($guest['forename'] . ' ' . $guest['surname']); ?>
-            </li>
-        <?php endforeach; ?>
-    </ul>
+<section>
+    <div class="card">
+        <h2>Select Guest</h2>
+        <p>Matching names for "<strong><?php echo htmlspecialchars("$forename $surname"); ?></strong>":</p>
 
-    <?php if (!empty($suggestedGuests)): ?>
-        <h2>Suggested Linked Guests:</h2>
-        <ul>
-            <?php foreach ($suggestedGuests as $suggested): ?>
-                <li>
-                    <input type="checkbox" name="guest_ids[]" value="<?php echo $suggested['id']; ?>">
-                    <?php echo htmlspecialchars($suggested['forename'] . ' ' . $suggested['surname']); ?>
-                </li>
-            <?php endforeach; ?>
-        </ul>
-    <?php endif; ?>
+        <form id="guest-form" action="rsvp.php" method="GET">
+            <div id="matching-guests">
+                <?php foreach ($guests as $guest): ?>
+                    <div class="guest-item" data-id="<?php echo $guest['id']; ?>">
+                        <?php echo htmlspecialchars($guest['forename'] . ' ' . $guest['surname']); ?>
+                    </div>
+                <?php endforeach; ?>
+            </div>
 
-    <button type="submit">Next</button>
-</form>
+            <?php if (!empty($suggestedGuests)): ?>
+                <h2>Suggested Linked Guests:</h2>
+                <div id="linked-guests">
+                    <?php foreach ($suggestedGuests as $suggested): ?>
+                        <div class="guest-item" data-id="<?php echo $suggested['id']; ?>">
+                            <?php echo htmlspecialchars($suggested['forename'] . ' ' . $suggested['surname']); ?>
+                        </div>
+                    <?php endforeach; ?>
+                </div>
+            <?php endif; ?>
+
+            <!-- Hidden input to store selected guest IDs -->
+            <input type="hidden" name="guest_ids" id="selected-guests">
+            <button type="submit">Next</button>
+        </form>
+    </div>
+</section>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const guestItems = document.querySelectorAll('.guest-item');
+        const selectedGuestsInput = document.getElementById('selected-guests');
+        const selectedGuests = new Set();
+
+        // Add click event listener to each guest item
+        guestItems.forEach(item => {
+            item.addEventListener('click', () => {
+                const guestId = item.dataset.id;
+
+                if (selectedGuests.has(guestId)) {
+                    // Deselect guest
+                    selectedGuests.delete(guestId);
+                    item.classList.remove('selected');
+                } else {
+                    // Select guest
+                    selectedGuests.add(guestId);
+                    item.classList.add('selected');
+                }
+
+                // Update hidden input with selected IDs
+                selectedGuestsInput.value = Array.from(selectedGuests).join(',');
+            });
+        });
+    });
+</script>
+
 <?php
 $stmt->close();
 $conn->close();
@@ -88,3 +150,4 @@ $conn->close();
 </body>
 <?php include '../components/footer.html'; ?>
 </html>
+
